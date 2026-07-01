@@ -1,0 +1,17 @@
+digraph clock_tree {
+  rankdir=LR;
+  node [fontname="Helvetica"];
+  "mem_u_sram_a" [shape=box3d, label="SRAM_1RW\nu_sram_a"];
+  "n_pll_clk" [shape=doublecircle, label="pll_clk\n(root)"];
+  "n_clk_div2" [shape=hexagon, label="clk_div2\ndiv /2"];
+  "n_sel_clk" [shape=trapezium, label="sel_clk\nMUX"];
+  "n_test_clk" [shape=doublecircle, label="test_clk\n(top input)"];
+  "n_gated_clk" [shape=house, label="gated_clk\nICG"];
+  "mem_u_sram_b" [shape=box3d, label="SRAM_1RW\nu_sram_b"];
+  "n_pll_clk" -> "n_clk_div2";
+  "n_clk_div2" -> "n_sel_clk";
+  "n_test_clk" -> "n_sel_clk";
+  "n_sel_clk" -> "n_gated_clk";
+  "n_gated_clk" -> "mem_u_sram_a";
+  "n_gated_clk" -> "mem_u_sram_b";
+}

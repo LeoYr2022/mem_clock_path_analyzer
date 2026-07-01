@@ -1,0 +1,3 @@
+# <module_name> [<clock_port>]
+# clock_port defaults to CLK if omitted.
+SRAM_1RW CLK
