@@ -29,6 +29,7 @@ testcase/memlist.txt       memory module names + clock port
 testcase/expected/         golden outputs the regression test diffs against
 tests/run_tests.tcl        runs the tool on testcase/ and diffs vs expected/
 tests/render_tree.py       renders the DOT into a styled PNG using PIL only
+tests/render_drawio.py     converts the DOT into an editable draw.io file
 tests/probe_parser.tcl     ad-hoc parser dump (dev aid)
 ```
 
@@ -104,7 +105,7 @@ Runs the analyzer, diffs `report.txt` + `clock_tree.dot` against
 ## Rendering the DOT as a picture
 
 The analyzer writes `out/clock_tree.dot` — a plain Graphviz DOT file.
-There are two supported ways to turn it into an image.
+There are three supported ways to turn it into a picture.
 
 ### Option 1 — `tests/render_tree.py` (no external install)
 
@@ -143,6 +144,27 @@ Installing Graphviz:
 `tests/run_tests.tcl` automatically renders a PNG via `dot -Tpng`
 when it finds `dot` on `PATH` — otherwise it prints a skip note and
 the test still passes.
+
+### Option 3 — draw.io / diagrams.net
+
+`tests/render_drawio.py` converts the DOT into an editable draw.io file
+(no install beyond Python — same shape/color scheme as the PNG):
+
+```
+python tests/render_drawio.py
+# -> writes out/clock_tree.drawio
+```
+
+Then open the file in one of:
+
+- **draw.io Desktop** — File → Open, pick `out/clock_tree.drawio`.
+- **diagrams.net (web)** — go to <https://app.diagrams.net>, choose
+  *Open Existing Diagram* → *Device*, pick the `.drawio` file.
+- **VS Code** — install the *Draw.io Integration* extension
+  (`hediet.vscode-drawio`) and open the file directly.
+
+Once opened you can re-arrange nodes, tweak colors, and export to
+PNG / SVG / PDF via *File → Export as…*.
 
 ## Supported-syntax caveats
 
