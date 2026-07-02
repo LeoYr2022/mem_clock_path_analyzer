@@ -3,21 +3,21 @@ RTL Memory Clock-Path Analyzer Report
 
 Memories traced: 2
 
-Memory: u_sram_a  (SRAM_1RW.CLK)
+Memory: inst_mem/u_sram_a  (SRAM_1RW.CLK)
   Path from root:
     [ROOT]       pll_clk         (module: pll_model, inst: u_pll)
     [DIV /2]     clk_div2        (module: clk_div2, inst: u_div)
     [MUX]        sel_clk         (module: clk_mux, inst: u_mux)  sel=test_en  inputs: clk_div2, pll_clk
     [ICG]        gated_clk_a     (module: icg, inst: u_icg_sram_a)  en=mem_en
-    [PIN]        u_sram_a.CLK
+    [PIN]        inst_mem/u_sram_a.CLK
   Effective divide ratio: 2
 
-Memory: u_sram_b  (SRAM_1RW.CLK)
+Memory: inst_mem/u_sram_b  (SRAM_1RW.CLK)
   Path from root:
     [ROOT]       pll_clk         (module: pll_model, inst: u_pll)
     [DIV /2]     clk_div2        (module: clk_div2, inst: u_div)
     [MUX]        sel_clk         (module: clk_mux, inst: u_mux)  sel=test_en  inputs: clk_div2, pll_clk
     [ICG]        gated_clk_b     (module: icg, inst: u_icg_sram_b)  en=mem_en
-    [PIN]        u_sram_b.CLK
+    [PIN]        inst_mem/u_sram_b.CLK
   Effective divide ratio: 2
 

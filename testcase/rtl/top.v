@@ -50,21 +50,18 @@ module top (
         .clk_out (gated_clk_b)
     );
 
-    SRAM_1RW u_sram_a (
-        .CLK (gated_clk_a),
-        .CEN (cen_a),
-        .WEN (wen_a),
-        .A   (addr_a),
-        .D   (din_a),
-        .Q   (dout_a)
-    );
-
-    SRAM_1RW u_sram_b (
-        .CLK (gated_clk_b),
-        .CEN (cen_b),
-        .WEN (wen_b),
-        .A   (addr_b),
-        .D   (din_b),
-        .Q   (dout_b)
+    memory_wrapper inst_mem (
+	.clk_a  (gated_clk_a),
+	.cen_a  (cen_a),
+	.wen_a  (wen_a),
+	.addr_a (addr_a),
+	.din_a  (din_a),
+	.dout_a (dout_a),
+	.clk_b  (gated_clk_b),
+	.cen_b  (cen_b),
+	.wen_b  (wen_b),
+	.addr_b (addr_b),
+	.din_b  (din_b),
+	.dout_b (dout_b)
     );
 endmodule

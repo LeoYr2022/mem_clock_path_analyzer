@@ -105,7 +105,8 @@ proc mcp::emit_dot {traces dot_path} {
         foreach node [dict get $t path] {
             set kind [dict get $node kind]
             set net  [expr {[dict exists $node net] ? [dict get $node net] : "?"}]
-            set id "n_[mcp::_sanitize $net]"
+            set nscope [expr {[dict exists $node path] ? [dict get $node path] : "top"}]
+            set id "n_[mcp::_sanitize ${nscope}_$net]"
             switch -- $kind {
                 ROOT_INPUT {
                     set shape doublecircle
@@ -164,7 +165,7 @@ proc mcp::emit_dot {traces dot_path} {
                         if {$pp eq $in_port} { set in_net $nn; break }
                     }
                     if {$in_net eq ""} continue
-                    set in_id "n_[mcp::_sanitize $in_net]"
+                    set in_id "n_[mcp::_sanitize ${nscope}_$in_net]"
                     if {![dict exists $nodes $in_id]} {
                         dict set nodes $in_id \
                             [list shape doublecircle \

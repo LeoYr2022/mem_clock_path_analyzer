@@ -1,18 +1,18 @@
 digraph clock_tree {
   rankdir=LR;
   node [fontname="Helvetica"];
-  "mem_u_sram_a" [shape=box3d, label="SRAM_1RW\nu_sram_a"];
-  "n_pll_clk" [shape=doublecircle, label="pll_clk\n(root)"];
-  "n_clk_div2" [shape=hexagon, label="clk_div2\ndiv /2"];
-  "n_sel_clk" [shape=trapezium, label="sel_clk\nMUX"];
-  "n_gated_clk_a" [shape=house, label="gated_clk_a\nICG"];
-  "mem_u_sram_b" [shape=box3d, label="SRAM_1RW\nu_sram_b"];
-  "n_gated_clk_b" [shape=house, label="gated_clk_b\nICG"];
-  "n_pll_clk" -> "n_clk_div2";
-  "n_clk_div2" -> "n_sel_clk";
-  "n_pll_clk" -> "n_sel_clk";
-  "n_sel_clk" -> "n_gated_clk_a";
-  "n_gated_clk_a" -> "mem_u_sram_a";
-  "n_sel_clk" -> "n_gated_clk_b";
-  "n_gated_clk_b" -> "mem_u_sram_b";
+  "mem_inst_mem/u_sram_a" [shape=box3d, label="SRAM_1RW\ninst_mem/u_sram_a"];
+  "n_top_pll_clk" [shape=doublecircle, label="pll_clk\n(root)"];
+  "n_top_clk_div2" [shape=hexagon, label="clk_div2\ndiv /2"];
+  "n_top_sel_clk" [shape=trapezium, label="sel_clk\nMUX"];
+  "n_top_gated_clk_a" [shape=house, label="gated_clk_a\nICG"];
+  "mem_inst_mem/u_sram_b" [shape=box3d, label="SRAM_1RW\ninst_mem/u_sram_b"];
+  "n_top_gated_clk_b" [shape=house, label="gated_clk_b\nICG"];
+  "n_top_pll_clk" -> "n_top_clk_div2";
+  "n_top_clk_div2" -> "n_top_sel_clk";
+  "n_top_pll_clk" -> "n_top_sel_clk";
+  "n_top_sel_clk" -> "n_top_gated_clk_a";
+  "n_top_gated_clk_a" -> "mem_inst_mem/u_sram_a";
+  "n_top_sel_clk" -> "n_top_gated_clk_b";
+  "n_top_gated_clk_b" -> "mem_inst_mem/u_sram_b";
 }
